@@ -1,0 +1,17 @@
+<!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
+<nav class="docs-navbar-header">
+  <a mat-button class="docs-button" routerLink="/" aria-label="SDS UI Library">
+    <span>SDS UI Library</span>
+  </a>
+  <a mat-button class="docs-navbar-hide-small docs-button"
+     *ngFor="let key of sectionKeys"
+     [routerLink]="key">{{sections[key].name}}</a>
+  <div class="flex-spacer"></div>
+</nav>
+
+<nav class="docs-navbar docs-navbar-show-small">
+  <a mat-button class="docs-navbar-link"
+    *ngFor="let key of sectionKeys"
+    [routerLink]="key">{{sections[key].name}}</a>
+  <a mat-button class="docs-navbar-link" routerLink="guides">Guides</a>
+</nav>

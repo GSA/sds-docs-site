@@ -1,0 +1,17 @@
+@import '../../../styles/constants';
+
+.docs-component-list-item {
+  display: inline-block;
+  margin: 20px;
+  vertical-align: top;
+  width: 260px;
+
+  .mat-card-title {
+    font-size: 20px;
+  }
+
+  &, &:active, &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+

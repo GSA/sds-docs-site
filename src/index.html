@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>SDS component library</title>
+  <base href="/">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Mono:300&display=swap" rel="stylesheet">
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+
+<body>
+  <sds-docs-app></sds-docs-app>
+  <script>
+    // This hides the address bar on mobile browsers
+    // https://developers.google.com/web/fundamentals/native-hardware/fullscreen/
+    window.addEventListener('load', function() { window.scrollTo(0, 1); });
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
+</body>
+</html>
