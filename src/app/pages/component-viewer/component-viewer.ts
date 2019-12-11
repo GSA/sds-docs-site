@@ -11,11 +11,12 @@ import {
 } from '@angular/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
-import {combineLatest, Observable, ReplaySubject, Subject} from 'rxjs';
+import {combineLatest, Observable, Subject} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 import {DocViewerModule} from '../../shared/doc-viewer/doc-viewer-module';
 import {DocItem, DocumentationItems} from '../../shared/documentation-items/documentation-items';
-
+import {TableOfContents} from '../../shared/table-of-contents/table-of-contents';
+import {TableOfContentsModule} from '../../shared/table-of-contents/table-of-contents.module';
 import {ComponentPageTitle} from '../page-title/page-title';
 
 @Component({
@@ -25,7 +26,7 @@ import {ComponentPageTitle} from '../page-title/page-title';
   encapsulation: ViewEncapsulation.None,
 })
 export class ComponentViewer implements OnDestroy {
-  componentDocItem = new ReplaySubject<DocItem>(1);
+  componentDocItem: DocItem;
   sections: Set<string> = new Set(['overview', 'api']);
   private _destroyed = new Subject();
 
@@ -46,9 +47,9 @@ export class ComponentViewer implements OnDestroy {
         takeUntil(this._destroyed))
         ).subscribe(d => {
           if (d.doc !== undefined) {
-            this.componentDocItem.next(d.doc);
-            this._componentPageTitle.title = `${d.doc.name}`;
-            d.doc.examples && d.doc.examples.length ?
+            this.componentDocItem = d.doc;
+            this._componentPageTitle.title = `${this.componentDocItem.name}`;
+            this.componentDocItem.examples && this.componentDocItem.examples.length ?
                 this.sections.add('examples') :
                 this.sections.delete('examples');
           } else {
@@ -62,40 +63,30 @@ export class ComponentViewer implements OnDestroy {
   }
 }
 
-/**
- * Base component class for views displaying docs on a particular component (overview, API,
- * examples). Responsible for resetting the focus target on doc item changes and resetting
- * the table of contents headers.
- */
-export class ComponentBaseView implements OnInit, OnDestroy {
-  @ViewChild('initialFocusTarget', {static: false}) focusTarget: ElementRef;
-
-  destroyed = new Subject<void>();
-
-  constructor(public componentViewer: ComponentViewer, breakpointObserver: BreakpointObserver) {
-  }
-
-  ngOnInit() {
-    this.componentViewer.componentDocItem.pipe(takeUntil(this.destroyed)).subscribe(() => {
-      // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
-      setTimeout(() => this.focusTarget.nativeElement.focus({preventScroll: true}), 100);
-    });
-  }
-
-  ngOnDestroy() {
-    this.destroyed.next();
-  }
-
-}
-
 @Component({
   selector: 'component-overview',
   templateUrl: './component-overview.html',
   encapsulation: ViewEncapsulation.None,
 })
-export class ComponentOverview extends ComponentBaseView {
-  constructor(componentViewer: ComponentViewer, breakpointObserver: BreakpointObserver) {
-    super(componentViewer, breakpointObserver);
+export class ComponentOverview implements OnInit {
+  @ViewChild('initialFocusTarget', {static: false}) focusTarget: ElementRef;
+  @ViewChild('toc', {static: false}) tableOfContents: TableOfContents;
+  showToc: Observable<boolean>;
+
+  constructor(public componentViewer: ComponentViewer, breakpointObserver: BreakpointObserver) {
+    this.showToc = breakpointObserver.observe('(max-width: 1200px)')
+      .pipe(map(result => !result.matches));
+  }
+
+  ngOnInit() {
+    // 100ms timeout is used to allow the page to settle before moving focus for screen readers.
+    setTimeout(() => this.focusTarget.nativeElement.focus({preventScroll: true}), 100);
+  }
+
+  scrollToSelectedContentSection() {
+    if (this.tableOfContents) {
+      this.tableOfContents.updateScrollPosition();
+    }
   }
 }
 
@@ -105,22 +96,14 @@ export class ComponentOverview extends ComponentBaseView {
   styleUrls: ['./component-api.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ComponentApi extends ComponentBaseView {
-  constructor(componentViewer: ComponentViewer, breakpointObserver: BreakpointObserver) {
-    super(componentViewer, breakpointObserver);
-  }
-}
+export class ComponentApi extends ComponentOverview {}
 
 @Component({
   selector: 'component-examples',
   templateUrl: './component-examples.html',
   encapsulation: ViewEncapsulation.None,
 })
-export class ComponentExamples extends ComponentBaseView {
-  constructor(componentViewer: ComponentViewer, breakpointObserver: BreakpointObserver) {
-    super(componentViewer, breakpointObserver);
-  }
-}
+export class ComponentExamples extends ComponentOverview {}
 
 @NgModule({
   imports: [
@@ -128,6 +111,7 @@ export class ComponentExamples extends ComponentBaseView {
     RouterModule,
     DocViewerModule,
     CommonModule,
+    TableOfContentsModule,
   ],
   exports: [ComponentViewer],
   declarations: [ComponentViewer, ComponentOverview, ComponentApi, ComponentExamples],

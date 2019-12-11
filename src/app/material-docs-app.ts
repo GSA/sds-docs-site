@@ -2,15 +2,17 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {Router, NavigationEnd} from '@angular/router';
 import {filter} from 'rxjs/operators';
 
+import {GaService} from './shared/ga/ga';
+
 @Component({
-  selector: 'sds-docs-app',
-  templateUrl: './sds-docs-app.html',
-  styleUrls: ['./sds-docs-app.scss'],
+  selector: 'material-docs-app',
+  templateUrl: './material-docs-app.html',
+  styleUrls: ['./material-docs-app.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class SdsDocsApp {
+export class MaterialDocsApp {
 
-  constructor(router: Router) {
+  constructor(router: Router, ga: GaService) {
     let previousRoute = router.routerState.snapshot.url;
 
     router.events
@@ -23,6 +25,7 @@ export class SdsDocsApp {
         }
 
         previousRoute = data.urlAfterRedirects;
+        ga.locationChanged(data.urlAfterRedirects);
       });
   }
 }

@@ -3,16 +3,16 @@
   <mat-sidenav #sidenav class="docs-component-viewer-sidenav"
               [mode]="'over'"
               [fixedInViewport]="(isScreenSmall | async) ? true : false"
-              [fixedTopGap]="92">
+              fixedTopGap="92">
     <app-component-nav [params]="params"></app-component-nav>
   </mat-sidenav>
   <div class="docs-component-sidenav-content">
     <component-page-header (toggleSidenav)="sidenav.toggle()"></component-page-header>
     <div class="docs-component-sidenav-inner-content">
       <div class="docs-component-sidenav-body-content">
-        <!-- If on large screen, menu resides to left of content -->
         <router-outlet></router-outlet>
       </div>
+      <app-footer></app-footer>
     </div>
   </div>
 </mat-sidenav-container>

@@ -1,0 +1,13 @@
+@mixin home-page-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  app-homepage {
+    .docs-header-headline {
+      color: mat-color($primary, default-contrast);
+    }
+
+    .docs-header-start {
+      color: mat-color($primary);
+    }
+  }
+}

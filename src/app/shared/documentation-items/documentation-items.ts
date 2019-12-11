@@ -1,17 +1,11 @@
 import {Injectable} from '@angular/core';
 
-export interface AdditionalApiDoc {
-  name: string;
-  path: string;
-}
-
 export interface DocItem {
   id: string;
   name: string;
   summary?: string;
   packageName?: string;
   examples?: string[];
-  additionalApiDocs?: AdditionalApiDoc[];
 }
 
 export interface DocCategory {
@@ -26,17 +20,16 @@ export interface DocSection {
   summary: string;
 }
 
-const LAYOUTS = 'layouts';
 const COMPONENTS = 'components';
+const LAYOUTS = 'layouts';
 export const SECTIONS: {[key: string]: DocSection} = {
   [COMPONENTS]: {
     name: 'Components',
-    summary: 'The components are a collection of user interface controls including buttons,' +
-    ' menus, filtering and form controls, modal dialogs and alerts, and many others.'
+    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer commodo cursus semper. Vivamus vel quam hendrerit, lobortis libero a, imperdiet augue. Duis in purus felis'
   },
   [LAYOUTS]: {
     name: 'Layouts',
-    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum turpis felis, faucibus in mattis ut, porttitor a arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras accumsan orci sit amet laoreet egestas. Aliquam gravida tempus aliquam.'
+    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer commodo cursus semper. Vivamus vel quam hendrerit, lobortis libero a, imperdiet augue. Duis in purus felis'
   },
 };
 
@@ -44,14 +37,14 @@ export const SECTIONS: {[key: string]: DocSection} = {
 const DOCS: {[key: string]: DocCategory[]} = {
   [COMPONENTS]: [
     {
-      id: 'brand',
-      name: 'Branding',
+      id: 'footer',
+      name: 'Structure',
       summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       items: [
         {
           id: 'footer',
           name: 'Footer',
-          summary: 'A page footer',
+          summary: 'Footer component for SAM.gov',
           examples: [
             'footer-overview'
           ]
@@ -61,18 +54,29 @@ const DOCS: {[key: string]: DocCategory[]} = {
   ],
   [LAYOUTS] : [
     {
-      id: 'menu',
-      name: 'Menu Patterns',
-      summary: 'Actions Menu, Subheader menu...',
+      id: 'category',
+      name: 'Category',
+      summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       items: [
+        {id: 'test-component',
+          name: 'Test 1',
+          summary: 'This is just an example',
+          examples: [
+            'my-example',
+          ]
+        },
         {
-          id: 'actions-menu',
-          name: 'Action Menu',
-          summary: 'Lorem ipsum dolor sit amet',
+          id: 'another-test-component',
+          name: 'Another Test Component',
+          summary: 'This is another test component',
           examples: []
         },
       ]
-    }
+    },
+    // TODO(jelbourn): re-add utilities and a11y as top-level categories once we can generate
+    // their API docs with dgeni. Currently our setup doesn't generate API docs for constants
+    // and standalone functions (much of the utilities) and we have no way of generating API
+    // docs more granularly than directory-level (within a11y) (same for viewport).
   ]
 };
 

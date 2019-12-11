@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {ActivatedRoute, Params, RouterModule} from '@angular/router';
 import {DocumentationItems, SECTIONS} from '../../shared/documentation-items/documentation-items';
 import {ComponentPageTitle} from '../page-title/page-title';
+import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
 import {Observable, combineLatest, Subscription} from 'rxjs';
 
 
@@ -42,7 +43,7 @@ export class ComponentCategoryList implements OnInit, OnDestroy {
 }
 
 @NgModule({
-  imports: [MatCardModule, CommonModule, RouterModule],
+  imports: [SvgViewerModule, MatCardModule, CommonModule, RouterModule],
   exports: [ComponentCategoryList],
   declarations: [ComponentCategoryList],
   providers: [DocumentationItems, ComponentPageTitle],

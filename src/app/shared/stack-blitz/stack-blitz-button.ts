@@ -1,5 +1,5 @@
 import {Component, Input, NgModule} from '@angular/core';
-import {ExampleData} from '@gsa-sam/components-examples';
+import {ExampleData} from '@gsa-sam/sds-examples';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';

@@ -1,19 +1,19 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {VERSION} from '@angular/material/core';
-import {ExampleData} from '@gsa-sam/components-examples';
+import {ExampleData} from '@gsa-sam/sds-examples';
 
 import {materialVersion} from '../version/version';
 
 const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1';
 
 const COPYRIGHT =
-  `Copyright YEAR OWNER.
+  `Copyright 2019 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at REPO`;
+    can be found in the LICENSE file at http://angular.io/license`;
 
 /**
- * Path that refers to the docs-content from the "@gsa-sam/components-examples" package. The
+ * Path that refers to the docs-content from the "@gsa-sam/sds-examples" package. The
  * structure is defined in the Material repository, but we include the docs-content as assets in
  * in the CLI configuration.
  */
@@ -38,7 +38,7 @@ const TEMPLATE_FILES = [
 ];
 
 const TAGS: string[] = ['angular', 'material', 'example'];
-const angularVersion = '^9.0.0-rc.0';
+const angularVersion = '>=8.0.0';
 
 const dependencies = {
   '@angular/cdk': materialVersion,
@@ -52,7 +52,7 @@ const dependencies = {
   '@angular/platform-browser': angularVersion,
   '@angular/platform-browser-dynamic': angularVersion,
   '@angular/router': angularVersion,
-  '@gsa-sam/components': '1.0.0-beta.0',
+  '@gsa-sam/components': '1.0.0-beta.4',
   '@gsa-sam/sam-styles': '^0.0.39',
   'angular-in-memory-web-api': '~0.9.0',
   'core-js': '^2.6.9',
@@ -60,7 +60,8 @@ const dependencies = {
   'moment': '^2.24.0',
   'rxjs': '>=6.5.3 <7.0.0',
   'tslib': '^1.10.0',
-  'zone.js': '~0.10.2',
+  'uswds': '2.2.1',
+  'zone.js': '^0.9.1',
 };
 
 /**

@@ -8,6 +8,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './app/material-module';
+import {RouterModule} from '@angular/router';
 
 import {MaterialDocsExample} from './app/material-docs-example';
 
@@ -20,6 +21,11 @@ import {MaterialDocsExample} from './app/material-docs-example';
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    RouterModule.forRoot(
+      [
+        { path: "example", component: FooterOverviewExample}
+      ]
+    )
   ],
   entryComponents: [MaterialDocsExample],
   declarations: [MaterialDocsExample],

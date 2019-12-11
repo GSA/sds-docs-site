@@ -1,14 +1,77 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+// Custom Settings
+// -------------------------------------
+@import '~@gsa-sam/sam-styles/src/stylesheets/theme/sds-theme-general';
+@import '~@gsa-sam/sam-styles/src/stylesheets/theme/sds-theme-typography';
+@import '~@gsa-sam/sam-styles/src/stylesheets/theme/sds-theme-color';
+@import '~@gsa-sam/sam-styles/src/stylesheets/theme/sds-theme-spacing';
+@import '~@gsa-sam/sam-styles/src/stylesheets/theme/sds-theme-utilities';
+@import '~@gsa-sam/sam-styles/src/stylesheets/theme/sds-theme-components';
 
-body {
-  font-family: Roboto, Arial, sans-serif;
-  margin: 0;
-}
-.basic-container {
-  padding: 30px;
-}
-.version-info {
-  font-size: 8pt;
-  float: right;
-  margin: 8px;
-}
+// // Required
+// // -------------------------------------
+@import '~uswds/dist/scss/settings/settings-general';
+@import '~uswds/dist/scss/settings/settings-typography';
+@import '~uswds/dist/scss/settings/settings-color';
+@import '~uswds/dist/scss/settings/settings-spacing';
+@import '~uswds/dist/scss/settings/settings-utilities';
+@import '~uswds/dist/scss/settings/settings-components';
+@import '~uswds/dist/scss/core/functions';
+@import '~uswds/dist/scss/core/system-tokens';
+@import '~uswds/dist/scss/core/variables';
+@import '~uswds/dist/scss/core/properties';
+@import '~uswds/dist/scss/core/mixins/all';
+@import '~uswds/dist/scss/core/placeholders/list';
+@import '~uswds/dist/scss/core/placeholders/table';
+
+// // Global
+// // -------------------------------------
+@import '~uswds/dist/scss/packages/global';
+
+// // Base
+// // -------------------------------------
+@import '~uswds/dist/scss/base/body';
+@import '~uswds/dist/scss/base/accessibility';
+
+// // Elements
+// // -------------------------------------
+@import '~uswds/dist/scss/elements/buttons';
+@import '~uswds/dist/scss/elements/embed';
+@import '~uswds/dist/scss/elements/figure';
+@import '~uswds/dist/scss/elements/form-controls/all';
+@import '~uswds/dist/scss/elements/layout-grid';
+@import '~uswds/dist/scss/elements/table';
+@import '~uswds/dist/scss/elements/tags';
+@import '~uswds/dist/scss/elements/typography/content';
+@import '~uswds/dist/scss/elements/typography/links';
+@import '~uswds/dist/scss/elements/typography/list';
+@import '~uswds/dist/scss/elements/typography/prose';
+
+// // Components
+// // -------------------------------------
+@import '~uswds/dist/scss/components/accordions';
+@import '~uswds/dist/scss/components/alerts';
+@import '~uswds/dist/scss/components/banner';
+@import '~uswds/dist/scss/components/checklist';
+@import '~uswds/dist/scss/components/footer';
+@import '~uswds/dist/scss/components/forms';
+@import '~uswds/dist/scss/components/graphic-list';
+@import '~uswds/dist/scss/components/header';
+@import '~uswds/dist/scss/components/layout';
+@import '~uswds/dist/scss/components/media-block';
+@import '~uswds/dist/scss/components/megamenu';
+@import '~uswds/dist/scss/components/nav-container';
+@import '~uswds/dist/scss/components/navbar';
+@import '~uswds/dist/scss/components/navigation';
+@import '~uswds/dist/scss/components/search';
+@import '~uswds/dist/scss/components/section';
+@import '~uswds/dist/scss/components/sidenav';
+@import '~uswds/dist/scss/components/skipnav';
+
+// // Utilities
+// // -------------------------------------
+@import '~uswds/dist/scss/packages/uswds-utilities';
+
+// // -------------------------------------
+// // Import theme custom styles
+
+@import '~@gsa-sam/sam-styles/src/stylesheets/theme/sds-theme-custom-styles';

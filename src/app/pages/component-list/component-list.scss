@@ -1,5 +1,15 @@
 @import '../../../styles/constants';
 
+.docs-component-list-category {
+  margin: 20px;
+
+  @media (max-width: $small-breakpoint-width) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
 .docs-component-list-item {
   display: inline-block;
   margin: 20px;
@@ -15,3 +25,27 @@
   }
 }
 
+.docs-component-list-icon-spacer {
+  flex-grow: 1;
+}
+
+.docs-component-list-card-title {
+  margin: 0 0 0 -8px;
+}
+
+.docs-component-list-card-header {
+  align-items: center;
+}
+
+.docs-component-list-card-summary {
+  min-height: 2.4em;
+  margin-top: 20px;
+}
+
+.docs-component-list-item-icon {
+  margin: 0 0 0 10px;
+  width: 40px;
+  height: 40px;
+  align-self: flex-end;
+  flex-grow: 0;
+}

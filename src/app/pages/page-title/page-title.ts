@@ -2,19 +2,19 @@ import {Injectable} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 
 /**
- * Service responsible for setting the title that appears above the components.
+ * Service responsible for setting the title that appears above the components and guide pages.
  */
 @Injectable()
 export class ComponentPageTitle {
   _title = '';
-  _originalTitle = 'SAM Design System UI component library';
+  _originalTitle = 'Angular Material UI component library';
 
   get title(): string { return this._title; }
 
   set title(title: string) {
     this._title = title;
     if (title !== '') {
-      title = `${title} | SDS Components`;
+      title = `${title} | Angular Material`;
     } else {
       title = this._originalTitle;
     }

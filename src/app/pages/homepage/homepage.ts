@@ -1,11 +1,17 @@
 import {Component, NgModule, OnInit} from '@angular/core';
+import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
+import {MatButtonModule} from '@angular/material/button';
+import {FooterModule} from '../../shared/footer/footer';
+import {RouterModule} from '@angular/router';
 import {ComponentPageTitle} from '../page-title/page-title';
 
 @Component({
   selector: 'app-homepage',
-  templateUrl: './homepage.html'
+  templateUrl: './homepage.html',
+  styleUrls: ['./homepage.scss']
 })
 export class Homepage implements OnInit {
+  isNextVersion = location.hostname.startsWith('next.material.angular.io');
 
   constructor(public _componentPageTitle: ComponentPageTitle) {}
 
@@ -15,7 +21,7 @@ export class Homepage implements OnInit {
 }
 
 @NgModule({
-  imports: [],
+  imports: [SvgViewerModule, MatButtonModule, FooterModule, RouterModule],
   exports: [Homepage],
   declarations: [Homepage],
 })

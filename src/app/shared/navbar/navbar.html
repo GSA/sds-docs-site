@@ -1,14 +1,33 @@
 <!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
-<nav class="docs-navbar-header">
-  <a mat-button class="docs-button" routerLink="/" aria-label="SDS UI Library">
-    <span>SDS UI Library</span>
+<nav class="docs-navbar-header"
+     [class.is-next-version]="isNextVersion">
+  <a mat-button class="docs-button" routerLink="/" aria-label="SAM Design System">
+    <span>SAM Design System</span>
   </a>
   <a mat-button class="docs-navbar-hide-small docs-button"
      *ngFor="let key of sectionKeys"
      [routerLink]="key">{{sections[key].name}}</a>
-  <div class="flex-spacer"></div>
-</nav>
+  <a mat-button class="docs-navbar-hide-small docs-button" routerLink="guides">Guides</a>
 
+  <div class="flex-spacer"></div>
+
+  <!-- <version-picker></version-picker>
+  <theme-picker></theme-picker> -->
+
+  <a mat-button class="docs-button docs-navbar-hide-small" href="https://github.com/GSA/sam-design-system"
+     aria-label="GitHub Repository">
+    <img class="SAM Design System"
+         src="../../../assets/img/homepage/github-circle-white-transparent.svg"
+         alt="angular">
+    GitHub
+  </a>
+  <a mat-icon-button class="docs-button docs-navbar-show-small"
+     href="https://github.com/angular/components" aria-label="GitHub Repository">
+    <img class="docs-angular-logo"
+         src="../../../assets/img/homepage/github-circle-white-transparent.svg"
+         alt="angular">
+  </a>
+</nav>
 <nav class="docs-navbar docs-navbar-show-small">
   <a mat-button class="docs-navbar-link"
     *ngFor="let key of sectionKeys"

@@ -5,7 +5,7 @@ import {
 } from '../../shared/documentation-items/documentation-items';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {ComponentPageTitle} from '../page-title/page-title';
-
+import {SvgViewerModule} from '../../shared/svg-viewer/svg-viewer';
 import {CommonModule} from '@angular/common';
 import {MatCardModule } from '@angular/material/card';
 import {combineLatest} from 'rxjs';
@@ -38,7 +38,7 @@ export class ComponentList {
 }
 
 @NgModule({
-  imports: [RouterModule, CommonModule, MatCardModule],
+  imports: [SvgViewerModule, RouterModule, CommonModule, MatCardModule],
   exports: [ComponentList],
   declarations: [ComponentList],
   providers: [DocumentationItems, ComponentPageTitle],

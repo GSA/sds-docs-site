@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sds-docs-site": {
+    "material-angular-io": {
       "root": "",
       "projectType": "application",
       "schematics": {
@@ -16,7 +16,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "sourceMap": true,
+            "sourceMap": false,
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -29,9 +29,16 @@
               },
               {
                 "glob": "**/*",
-                "input": "./node_modules/@gsa-sam/components-examples/docs-content",
+                "input": "./node_modules/@gsa-sam/sds-examples/docs-content",
                 "output": "/docs-content"
-              }
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
+              },
+              "src/robots.txt",
+              "src/sitemap.xml"
             ],
             "styles": [
               {
@@ -39,18 +46,32 @@
               },
               {
                 "input": "src/highlightjs/material-light.scss"
+              },
+              {
+                "input": "src/assets/pink-bluegrey.css",
+                "lazy": true,
+                "bundleName": "pink-bluegrey"
+              },
+              {
+                "input": "src/assets/deeppurple-amber.css",
+                "lazy": true,
+                "bundleName": "deeppurple-amber"
+              },
+              {
+                "input": "src/assets/indigo-pink.css",
+                "lazy": true,
+                "bundleName": "indigo-pink"
+              },
+              {
+                "input": "src/assets/purple-green.css",
+                "lazy": true,
+                "bundleName": "purple-green"
               }
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
               "commonChunk": false,
               "optimization": true,
               "outputHashing": "all",
@@ -73,18 +94,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sds-docs-site:build"
+            "browserTarget": "material-angular-io:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sds-docs-site:build:production"
+              "browserTarget": "material-angular-io:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sds-docs-site:build"
+            "browserTarget": "material-angular-io:build"
           }
         },
         "test": {
@@ -101,6 +122,26 @@
               },
               {
                 "input": "src/highlightjs/material-light.scss"
+              },
+              {
+                "input": "src/assets/pink-bluegrey.css",
+                "lazy": true,
+                "bundleName": "pink-bluegrey"
+              },
+              {
+                "input": "src/assets/deeppurple-amber.css",
+                "lazy": true,
+                "bundleName": "deeppurple-amber"
+              },
+              {
+                "input": "src/assets/indigo-pink.css",
+                "lazy": true,
+                "bundleName": "indigo-pink"
+              },
+              {
+                "input": "src/assets/purple-green.css",
+                "lazy": true,
+                "bundleName": "purple-green"
               }
             ],
             "assets": [
@@ -108,6 +149,11 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
               }
             ]
           }
@@ -129,11 +175,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sds-docs-site:serve"
+            "devServerTarget": "material-angular-io:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sds-docs-site:serve:production"
+              "devServerTarget": "material-angular-io:serve:production"
             }
           }
         }

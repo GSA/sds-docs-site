@@ -1,0 +1,9 @@
+@mixin footer-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  app-footer {
+    .docs-footer-links a {
+      color: mat-color($primary, default-contrast);
+    }
+  }
+}

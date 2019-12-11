@@ -28,17 +28,13 @@ export class DocViewer implements OnDestroy {
   private _portalHosts: DomPortalHost[] = [];
   private _documentFetchSubscription: Subscription;
 
-  @Input() name: string;
-
   /** The URL of the document to display. */
   @Input()
-  set documentUrl(url: string | undefined) {
-    if (url !== undefined) {
-      this._fetchDocument(url);
-    }
+  set documentUrl(url: string) {
+    this._fetchDocument(url);
   }
 
-  @Output() contentRendered = new EventEmitter<HTMLElement>();
+  @Output() contentRendered = new EventEmitter<void>();
 
   /** The document text. It should not be HTML encoded. */
   textContent = '';
@@ -90,7 +86,7 @@ export class DocViewer implements OnDestroy {
     // until the Angular zone becomes stable.
     this._ngZone.onStable
       .pipe(take(1))
-      .subscribe(() => this.contentRendered.next(this._elementRef.nativeElement));
+      .subscribe(() => this.contentRendered.next());
   }
 
   /** Show an error that occurred when fetching a document. */
