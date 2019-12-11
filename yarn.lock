@@ -988,8 +988,8 @@
     uswds "2.2.1"
 
 "@gsa-sam/sds-examples@GSA/sds-docs-content#master":
-  version "1.0.0-beta.4-sha-5c08a51"
-  resolved "https://codeload.github.com/GSA/sds-docs-content/tar.gz/6c468c3ebfc227f2ff52de3e26e09329761bc9bd"
+  version "1.0.0-beta.4-sha-e90226a"
+  resolved "https://codeload.github.com/GSA/sds-docs-content/tar.gz/1bacba7ae4316df04a6998b0ca3efab57e15ba55"
   dependencies:
     tslib "^1.7.1"
 

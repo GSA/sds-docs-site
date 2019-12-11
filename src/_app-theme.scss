@@ -4,7 +4,6 @@
 @import './app/pages/component-list/component-list-theme';
 @import './app/pages/component-sidenav/component-sidenav-theme';
 @import './app/pages/component-viewer/component-viewer-theme';
-@import './app/pages/guide-list/guide-list-theme';
 @import './app/pages/homepage/homepage-theme';
 @import './app/shared/example-viewer/example-viewer-theme';
 @import './app/shared/footer/footer-theme';
@@ -55,7 +54,6 @@
   @include docs-site-tables-theme($theme);
   @include example-viewer-theme($theme);
   @include footer-theme($theme);
-  @include guide-list-theme($theme);
   @include home-page-theme($theme);
   @include nav-bar-theme($theme);
   @include table-of-contents-theme($theme);
